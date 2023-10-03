@@ -64,6 +64,11 @@ export function App() {
             if (newValue === null) {
               return
             }
+            if (newValue.id === "") {
+              console.log("Loading all transactions")
+              loadAllTransactions()
+              return
+            }
 
             await loadTransactionsByEmployee(newValue.id)
           }}
