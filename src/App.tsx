@@ -15,7 +15,9 @@ export function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   const transactions = useMemo(
-    () => paginatedTransactions?.data ?? transactionsByEmployee ?? null,
+    () => {
+      return paginatedTransactions?.data ?? transactionsByEmployee ?? null
+    },
     [paginatedTransactions, transactionsByEmployee]
   )
 
@@ -65,8 +67,7 @@ export function App() {
               return
             }
             if (newValue.id === "") {
-              console.log("Loading all transactions")
-              loadAllTransactions()
+              await loadAllTransactions()
               return
             }
 
